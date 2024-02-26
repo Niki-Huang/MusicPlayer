@@ -1,0 +1,170 @@
+<view class="indexContainer">
+    <!-- 轮播图区域 -->
+    <swiper class="banners" indicator-dots indicator-color="ivory" indicator-active-color="#d43d33">
+        <swiper-item wx:for="{{bannerList}}" wx:key="bannerId">
+            <image src="{{item.pic}}"></image>
+        </swiper-item>
+    </swiper>
+
+    <!-- 图标导航区域 -->
+    <view class="navContainer">
+        <view class="navItem" bindtap="toRecommendSong">
+            <text class="iconfont icon-meirituijian"></text>
+            <text>每日推荐</text>
+        </view>
+        <view class="navItem" bindtap="toOther">
+            <text class="iconfont icon-gedan1"></text>
+            <text>歌单</text>
+        </view>
+        <view class="navItem">
+            <text class="iconfont icon-icon-ranking"></text>
+            <text>排行榜</text>
+        </view>
+        <view class="navItem">
+            <text class="iconfont icon-diantai"></text>
+            <text>电台</text>
+        </view>
+        <view class="navItem">
+            <text class="iconfont icon-zhiboguankanliangbofangsheyingshexiangjixianxing"></text>
+            <text>直播</text>
+        </view>
+    </view>
+
+    <!-- 推荐歌曲区域 -->
+    <view class="recommendContainer">
+        <!-- 头部区域 -->
+        <NavHeader title="推荐歌曲" nav="为您精心推荐"></NavHeader>
+        <!-- 内容区 -->
+        <scroll-view class="recommendScroll" enable-flex scroll-x>
+            <view class="scrollItem" wx:for="{{recommendList}}" wx:key="id" wx:for-item="recommendItem">
+                <image src="{{recommendItem.picUrl}}"></image>
+                <text>{{recommendItem.name}}</text>
+            </view>
+        </scroll-view>
+    </view>
+
+    <!-- 排行榜区域 -->
+    <view class="topList">
+        <!-- 头部区域 -->
+        <NavHeader title="精品歌单" nav="热歌风向标"></NavHeader>
+        <!-- 内容区域 -->
+        <swiper class="topListSwiper" next-margin="50rpx">
+            <swiper-item wx:for="{{jingPingList}}" wx:key="id">
+                <view class="swiperItem">
+                    <view class="title">{{item.name}}</view>
+                    <view class="musicItem" wx:for="{{item.tracks}}" wx:key="id" wx:for-item="musicItem">
+                        <image src="{{musicItem.al.picUrl}}"></image>
+                        <text class="count">{{index+1}}</text>
+                        <text class="musicName">{{musicItem.name}}</text>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <!-- <swiper class="topListSwiper" next-margin="50rpx">
+            <swiper-item>
+                <view class="swiperItem">
+                    <view class="title">新歌榜</view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/zfdCU3cL-dsTqVvjmKPrjg==/109951169222823883.jpg"></image>
+                        <text class="count">1</text>
+                        <text class="musicName">浮光</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/laYX6Do0u7U2j321rkKy5A==/109951169165093309.jpg"></image>
+                        <text class="count">2</text>
+                        <text class="musicName">阳光男孩阳光女孩2023</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/IRZJr1q7IsBwd4C6TlzqTg==/109951169146619379.jpg"></image>
+                        <text class="count">3</text>
+                        <text class="musicName">爱丫爱丫 (live)</text>
+                    </view>
+                </view>
+            </swiper-item>
+
+            <swiper-item>
+                <view class="swiperItem">
+                    <view class="title">热歌榜</view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/MgrERz_auwIi5Km64TxwjQ==/109951169154658797.jpg"></image>
+                        <text class="count">1</text>
+                        <text class="musicName">离别开出花</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/MIWMnBEedpJ8IpOau5D7PA==/109951168829804653.jpg"></image>
+                        <text class="count">2</text>
+                        <text class="musicName">我想念</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/CDhYcShQKH2VAMENuCxWWQ==/109951164166513349.jpg"></image>
+                        <text class="count">3</text>
+                        <text class="musicName">悬溺</text>
+                    </view>
+                </view>
+            </swiper-item>
+
+            <swiper-item>
+                <view class="swiperItem">
+                    <view class="title">原创榜</view>
+                    <view class="musicItem">
+                        <image src="http://p2.music.126.net/OrzXQYeQQujgtvup9GNH-g==/109951169200632159.jpg"></image>
+                        <text class="count">1</text>
+                        <text class="musicName">航班</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p2.music.126.net/2FwP19FHMOm-AYM90vWxSA==/109951169196896916.jpg"></image>
+                        <text class="count">2</text>
+                        <text class="musicName">E妹儿</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p2.music.126.net/W41R0DLqGdriNAgB05agEg==/109951169200615161.jpg"></image>
+                        <text class="count">3</text>
+                        <text class="musicName">what do you say</text>
+                    </view>
+                </view>
+            </swiper-item>
+
+            <swiper-item>
+                <view class="swiperItem">
+                    <view class="title">飙升榜</view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/itLHKNG8Mb8Gt7sgVvagvg==/109951167222024810.jpg"></image>
+                        <text class="count">1</text>
+                        <text class="musicName">偷心</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/q-3t36CBjYBIByW_GtlKdA==/109951169172482310.jpg"></image>
+                        <text class="count">2</text>
+                        <text class="musicName">BINGBIAN病变</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/60bRwEPRypvDsStmbSpYmw==/109951169104046356.jpg"></image>
+                        <text class="count">3</text>
+                        <text class="musicName">Outlaw</text>
+                    </view>
+                </view>
+            </swiper-item>
+
+            <swiper-item>
+                <view class="swiperItem">
+                    <view class="title">云音乐国电榜</view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/gALMtQN_mJ_E5ex7xu70iA==/109951169213260333.jpg"></image>
+                        <text class="count">1</text>
+                        <text class="musicName">离开</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/niAAbhrzaDKC7A0O4haSAg==/109951169174700761.jpg"></image>
+                        <text class="count">2</text>
+                        <text class="musicName">Nullifier</text>
+                    </view>
+                    <view class="musicItem">
+                        <image src="http://p1.music.126.net/lm_mgML6qZ5Jx_xQWV-gIw==/109951169219741673.jpg"></image>
+                        <text class="count">3</text>
+                        <text class="musicName">Lee！</text>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper> -->
+    </view>
+</view>

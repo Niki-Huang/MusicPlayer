@@ -1,0 +1,22 @@
+//注册获取用户唯一标识的接口
+app.use("/getOpenId", async (req, res, next) => {
+  let code = req.query.code;
+  let appId = "wx47aa6b159736999c";
+  let appSecret = "1dd2b57d85e0ff381c929e49d3b97e2a";
+  let url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${appSecret}&js_code=${code}&grant_type=authorization_code`;
+  let result = await fly.get(url);
+  let openId = JSON.parse(result.data).openid;
+  let person = {
+    username: "黄黄",
+    age: "22",
+    openId,
+  };
+  let token = jwt.sign(person, "nikdos");
+  res.send(token);
+});
+
+app.use("/getIdentification", (req, res, next) => {
+  let userIno = jwt.verify(req.query.token, "nikdos");
+  // console.log(JSON.stringify(userIno));
+  res.send(JSON.stringify(userIno));
+});

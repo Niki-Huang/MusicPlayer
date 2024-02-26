@@ -1,0 +1,40 @@
+{
+	"appid": "wx47aa6b159736999c",
+	"compileType": "miniprogram",
+	"libVersion": "3.3.0",
+	"isGameTourist": false,
+	"packOptions": {
+		"ignore": [],
+		"include": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"packNpmRelationList": [],
+		"nodeModules": true
+	},
+	"editorSetting": {
+		"tabIndent": "auto",
+		"tabSize": 2
+	},
+	"projectname": "Music",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {}
+}
